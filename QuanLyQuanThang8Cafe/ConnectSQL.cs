@@ -11,11 +11,11 @@ namespace QuanLyQuanThang8Cafe
 {
     public class ConnectSQL
     {
-           private static MySqlConnection GetConnection()
-           {
-                string connStr = @"Server=localhost;Port=3306;Database=QuanLyCafe;Uid=root;Pwd=123456;";
-                return new MySqlConnection(connStr);
-           }
+        private static MySqlConnection GetConnection()
+        {
+            string connStr = @"Server=localhost;Port=3306;Database=QuanLyCafe;Uid=root;Pwd=123456;";
+            return new MySqlConnection(connStr);
+        }
 
         private static MySqlConnection cnn;
 
@@ -25,7 +25,7 @@ namespace QuanLyQuanThang8Cafe
             cnn.Open();
         }
 
-        public static void CloseConnection() 
+        public static void CloseConnection()
         {
             if (cnn != null && cnn.State == ConnectionState.Open)
             {
@@ -36,7 +36,7 @@ namespace QuanLyQuanThang8Cafe
 
         // Hàm chạy lệnh Sql lấy dữ liệu Data Query
 
-        public static DataTable ThucThiQuery(string sql) 
+        public static DataTable ThucThiQuery(string sql)
         {
             OpenConnection();
             MySqlCommand cmd = cnn.CreateCommand();
@@ -49,7 +49,7 @@ namespace QuanLyQuanThang8Cafe
 
         // Hàm chạy lệnh Sql thêm, xóa, sửa Non Query
 
-        public static string ThucThiNonQuery(string sql) 
+        public static string ThucThiNonQuery(string sql)
         {
             OpenConnection();
             MySqlCommand cmd = cnn.CreateCommand();
@@ -86,4 +86,6 @@ namespace QuanLyQuanThang8Cafe
             cmd.CommandText = sql;
             return cmd.ExecuteScalar().ToString();
         }
+    }
+}
 
